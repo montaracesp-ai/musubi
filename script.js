@@ -67,7 +67,11 @@ const COMING = "Sí, allí estaré";
 rsvpForm.querySelector(".rsvp-form__note").hidden = formConnected;
 
 rsvpForm.addEventListener("change", (event) => {
-  if (event.target.name === "attending") rsvpMore.hidden = event.target.value !== COMING;
+  if (event.target.name !== "attending") return;
+  const coming = event.target.value === COMING;
+  rsvpMore.hidden = !coming;
+  // Las alergias solo son obligatorias para quien viene
+  rsvpForm.querySelector("[name=allergies]").required = coming;
 });
 
 rsvpForm.addEventListener("submit", async (event) => {
@@ -76,6 +80,12 @@ rsvpForm.addEventListener("submit", async (event) => {
   if (!data.get("name").trim() || !data.get("attending")) {
     rsvpError.textContent = "Dinos tu nombre y si vendrás, por favor.";
     rsvpError.hidden = false;
+    return;
+  }
+  if (data.get("attending") === COMING && !data.get("allergies").trim()) {
+    rsvpError.textContent = "Cuéntanos si tienes alguna alergia, o escribe «Ninguna».";
+    rsvpError.hidden = false;
+    rsvpForm.querySelector("[name=allergies]").focus();
     return;
   }
   rsvpError.hidden = true;

@@ -536,6 +536,8 @@ a { color: inherit; }
 
 /* Confirmación */
 .thread--rsvp { width: 120px; display: block; margin: 0 auto 1rem; }
+.rsvp__notice { margin: -0.4rem auto 1.2rem; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage-dark); }
+.field input::placeholder { color: rgba(119, 120, 110, 0.6); }
 
 /* Formulario de asistencia: una tarjeta de papel con campos subrayados */
 .rsvp-form, .rsvp-thanks {
