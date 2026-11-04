@@ -537,6 +537,59 @@ a { color: inherit; }
 /* Confirmación */
 .thread--rsvp { width: 120px; display: block; margin: 0 auto 1rem; }
 
+/* Formulario de asistencia: una tarjeta de papel con campos subrayados */
+.rsvp-form, .rsvp-thanks {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1.4rem, 5vw, 3rem);
+  background: var(--washi);
+  background-image: var(--paper-noise);
+  box-shadow: 0 22px 45px -30px rgba(40, 50, 35, 0.5);
+  text-align: left;
+}
+.field { display: block; border: 0; margin-bottom: 1.8rem; }
+.field__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  padding: 0;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+}
+.field__label small { font-family: var(--sans); font-size: 0.75rem; color: var(--muted); }
+.field input[type="text"], .field textarea {
+  width: 100%;
+  padding: 0.5rem 0.1rem;
+  border: 0;
+  border-bottom: 1px solid rgba(79, 95, 70, 0.45);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+.field input[type="text"]:focus, .field textarea:focus { outline: none; border-bottom-color: var(--red); }
+.choices { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice span {
+  display: inline-block;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid rgba(79, 95, 70, 0.45);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.choice input:checked + span { background: var(--red); border-color: var(--red); color: var(--cream); }
+.choice input:focus-visible + span { outline: 2px solid var(--red); outline-offset: 2px; }
+.rsvp-form .btn { display: block; margin: 0.5rem auto 0; border: 0; cursor: pointer; background: var(--red); font-family: var(--sans); }
+.rsvp-form .btn:hover { background: #86262e; }
+.rsvp-form .btn:disabled { opacity: 0.6; cursor: wait; }
+.rsvp-form__error { color: var(--red); text-align: center; margin-bottom: 1rem; }
+.rsvp-form__note { margin-top: 1rem; text-align: center; font-size: 0.8rem; color: var(--muted); }
+.rsvp-thanks { text-align: center; outline: none; }
+.thread--thanks { width: 140px; display: block; margin: 0 auto 1rem; }
+.rsvp-thanks__title { font-family: var(--serif); font-weight: 400; font-size: 2rem; margin-bottom: 0.6rem; }
+.rsvp-thanks__text { color: var(--muted); }
+
 .footer {
   padding: 3rem 1rem;
   text-align: center;

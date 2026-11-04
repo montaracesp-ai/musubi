@@ -270,8 +270,52 @@
         Nos haría muy felices que formaras parte de este nudo.
         Confírmanos tu asistencia antes del <strong>17 de junio de 2027</strong>.
       </p>
-      <!-- TODO: enlazar al formulario -->
-      <a href="#" class="btn">Confirmar asistencia</a>
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <label class="field">
+          <span class="field__label">Nombre y apellidos</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+
+        <fieldset class="field">
+          <legend class="field__label">¿Vendrás?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="attending" value="Sí, allí estaré" required><span>Sí, allí estaré</span></label>
+            <label class="choice"><input type="radio" name="attending" value="No podré ir"><span>No podré ir</span></label>
+          </div>
+        </fieldset>
+
+        <div class="rsvp-form__more" hidden>
+          <label class="field">
+            <span class="field__label">Nombre de tu acompañante <small>(si viene alguien contigo)</small></span>
+            <input type="text" name="companion" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="field__label">Alergias o intolerancias</span>
+            <input type="text" name="allergies" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="field__label">Una canción que no puede faltar</span>
+            <input type="text" name="song" autocomplete="off">
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="field__label">Un mensaje para nosotros <small>(opcional)</small></span>
+          <textarea name="message" rows="3"></textarea>
+        </label>
+
+        <p class="rsvp-form__error" role="alert" hidden></p>
+        <button type="submit" class="btn">Atar mi hilo</button>
+        <p class="rsvp-form__note" hidden>Formulario en pruebas: todavía no guarda las respuestas.</p>
+      </form>
+
+      <div class="rsvp-thanks" id="rsvp-thanks" hidden tabindex="-1">
+        <svg class="thread thread--thanks" viewBox="0 0 120 60" aria-hidden="true">
+          <path pathLength="1" d="M5 40 C 35 40 45 38 55 32 C 70 22 66 8 58 10 C 48 12 52 34 68 38 C 80 41 95 40 115 40" />
+        </svg>
+        <h3 class="rsvp-thanks__title"></h3>
+        <p class="rsvp-thanks__text"></p>
+      </div>
     </section>
   </main>
 
