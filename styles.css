@@ -1,7 +1,8 @@
 :root {
   /* Paleta de la web: salvia, melocotón, coral, rosa empolvado y blanco roto */
   --cream: #f8f6f1;
-  --sand: #f7e6e3;
+  --sand: #e4eadc;
+  --washi: #f3f1e8;
   --ink: #3a3d35;
   --muted: #77786e;
   --sage: #687c5c;
@@ -78,18 +79,52 @@ a { color: inherit; }
   display: grid;
   place-items: center;
   text-align: center;
-  padding: 6rem 1rem 3rem;
+  padding: 7rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+  /* Atardecer sutil: cielo claro arriba, melocotón y rosa en el centro, salvia en el horizonte */
   background:
-    radial-gradient(circle at 18% 18%, rgba(104, 124, 92, 0.16), transparent 45%),
-    radial-gradient(circle at 85% 75%, rgba(238, 159, 114, 0.18), transparent 45%),
-    radial-gradient(circle at 60% 100%, rgba(243, 200, 201, 0.35), transparent 40%),
-    var(--cream);
+    radial-gradient(ellipse 55% 42% at 50% 40%, rgba(255, 240, 222, 0.9), transparent 70%),
+    radial-gradient(ellipse 80% 50% at 15% 85%, rgba(104, 124, 92, 0.14), transparent 70%),
+    radial-gradient(ellipse 70% 45% at 90% 15%, rgba(243, 200, 201, 0.45), transparent 70%),
+    linear-gradient(180deg, #f7f1ea 0%, #fae7d9 34%, #f8dcd6 58%, #efe2df 78%, #e4e9dd 100%);
 }
+/* Grano de papel y marco fino de invitación */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .33 0 0 0 0 .27 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 84px clamp(12px, 3vw, 32px) clamp(12px, 3vw, 32px);
+  border: 1px solid rgba(168, 50, 58, 0.28);
+  outline: 1px solid rgba(168, 50, 58, 0.14);
+  outline-offset: -7px;
+  pointer-events: none;
+}
+.hero__inner { position: relative; z-index: 1; }
+.hero .btn { background: var(--red); }
+.hero .btn:hover { background: #86262e; }
 .hero__kicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   font-size: 0.8rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--sage);
+}
+.hero__kicker::before, .hero__kicker::after {
+  content: "";
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
 }
 .hero__names {
   font-family: var(--serif);
@@ -110,6 +145,7 @@ a { color: inherit; }
   font-family: var(--serif);
   font-size: 1.8rem;
   letter-spacing: 0.2em;
+  color: var(--red);
 }
 .hero__place { color: var(--muted); margin-bottom: 2.5rem; }
 
@@ -119,6 +155,8 @@ a { color: inherit; }
   gap: clamp(1rem, 4vw, 3rem);
   margin-bottom: 3rem;
 }
+.countdown div { min-width: 4.2rem; }
+.countdown div + div { border-left: 1px solid rgba(104, 124, 92, 0.3); padding-left: clamp(1rem, 4vw, 3rem); }
 .countdown span {
   display: block;
   font-family: var(--serif);
@@ -172,7 +210,26 @@ a { color: inherit; }
 .js .reveal.is-visible { opacity: 1; transform: none; }
 
 /* Leyenda */
-.legend { max-width: 760px; margin: 0 auto; }
+.legend {
+  position: relative;
+  padding: 8rem 1.5rem;
+  background-color: var(--washi);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .33 0 0 0 0 .27 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.004 .09' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .42 0 0 0 0 .34 0 0 0 .16 -.04'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+.legend > * { max-width: 760px; margin-inline: auto; }
+/* Puntilla: franja de shippō (círculos entrelazados) rematada con puntos rojos */
+.legend::before, .legend::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 34px;
+  background:
+    radial-gradient(circle, rgba(168, 50, 58, 0.55) 1.3px, transparent 1.8px) 0 100% / 14px 8px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cg fill='none' stroke='%23687c5c' stroke-opacity='.45' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='14'/%3E%3Ccircle cx='28' cy='0' r='14'/%3E%3Ccircle cx='0' cy='28' r='14'/%3E%3Ccircle cx='28' cy='28' r='14'/%3E%3Ccircle cx='14' cy='14' r='14'/%3E%3C/g%3E%3C/svg%3E") center top / 28px 28px repeat-x;
+}
+.legend::before { top: 0; }
+.legend::after { bottom: 0; transform: scaleY(-1); }
 .legend__mark {
   display: inline-grid;
   place-items: center;
@@ -216,14 +273,18 @@ a { color: inherit; }
 .knot {
   position: relative;
   width: calc(50% - 2.5rem);
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.6rem 1.8rem;
+  background: var(--cream);
+  border: 1px solid rgba(104, 124, 92, 0.18);
+  box-shadow: 0 10px 30px -18px rgba(79, 95, 70, 0.35);
 }
 .knot:nth-of-type(odd) { margin-right: auto; text-align: right; }
 .knot:nth-of-type(even) { margin-left: auto; }
 .knot::before {
   content: "";
   position: absolute;
-  top: 0.55rem;
+  top: 1.85rem;
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -247,9 +308,8 @@ a { color: inherit; }
   margin: 0.3rem 0 0.6rem;
 }
 .knot p + p { margin-top: 0.8rem; }
-.knot--feature, .knot--final { width: 100%; text-align: center !important; padding-top: 2.5rem; }
-.knot--feature::before, .knot--final::before { top: 0; left: 50% !important; right: auto !important; transform: translateX(-50%); }
-.knot--feature { background: var(--sand); }
+.knot--feature, .knot--final { width: 100%; text-align: center !important; padding: 2.5rem 2rem 2rem; }
+.knot--feature::before, .knot--final::before { top: -7px; left: 50% !important; right: auto !important; transform: translateX(-50%); }
 .knot--feature p { max-width: 600px; margin-inline: auto; }
 .knot--final { margin-bottom: 0; }
 .knot--final h3 { font-size: 2.2rem; }
@@ -395,8 +455,14 @@ a { color: inherit; }
   }
   .knot:nth-of-type(odd)::before, .knot:nth-of-type(even)::before { left: calc(-2rem + 0.5px); right: auto; }
   .knot:nth-of-type(odd) .cities { justify-content: flex-start; }
-  .knot--feature, .knot--final { text-align: left !important; padding: 0; background: none; }
-  .knot--feature::before, .knot--final::before { top: 0.55rem; left: calc(-2rem + 0.5px) !important; transform: none; }
+  .knot, .knot--feature, .knot--final { text-align: left !important; padding: 1.3rem 1.2rem; }
+  .knot--feature::before, .knot--final::before { top: 1.55rem; left: calc(-2rem + 0.5px) !important; transform: none; }
+  .knot::before { top: 1.55rem; }
+  .hero::after { inset: 72px 10px 10px; }
+  .countdown { gap: 0.7rem; }
+  .countdown div { min-width: 0; }
+  .countdown div + div { padding-left: 0.7rem; }
+  .countdown small { letter-spacing: 0.1em; }
 
   .dates__pair { grid-template-columns: 1fr; }
   .thread--dates { width: 120px; margin: 0.5rem auto; }
