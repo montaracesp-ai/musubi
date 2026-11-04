@@ -30,6 +30,10 @@
       <p class="hero__kicker">Nos casamos</p>
       <h1 class="hero__names">Raúl <span>&</span> Judy</h1>
 
+      <svg class="thread thread--hero" viewBox="0 0 400 60" aria-hidden="true">
+        <path pathLength="1" d="M5 42 C 90 42 140 44 185 40 C 222 36 226 10 202 9 C 178 8 176 36 214 40 C 260 44 310 42 395 42" />
+      </svg>
+
       <p class="hero__tagline">Un hilo rojo nos unió en 2016.<br>El 17 de julio lo atamos para siempre.</p>
 
       <p class="hero__date">
@@ -69,7 +73,7 @@
       <h2 class="section__title">Nuestra historia</h2>
 
       <div class="story__line">
-        <div class="story__thread" aria-hidden="true"></div>
+        <div class="story__thread" aria-hidden="true"><div class="story__thread-fill"></div></div>
 
         <article class="knot reveal">
           <p class="knot__date">29 · 10 · 2016</p>
@@ -259,14 +263,6 @@
     <p class="footer__names">Raúl <span>&</span> Judy</p>
     <p class="footer__line">Unidos por un hilo rojo desde 2016 · 17·07·2027</p>
   </footer>
-
-  <svg class="page-thread" aria-hidden="true">
-    <defs>
-      <filter id="fade-blur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="10" /></filter>
-      <mask id="text-mask" maskUnits="userSpaceOnUse"></mask>
-    </defs>
-    <path mask="url(#text-mask)" />
-  </svg>
 
   <script src="script.js"></script>
 </body>
