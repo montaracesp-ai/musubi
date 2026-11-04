@@ -17,3 +17,28 @@ function tick() {
 
 tick();
 setInterval(tick, 1000);
+
+// Los hilos se dibujan y los bloques aparecen al entrar en pantalla
+const observer = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    entry.target.classList.add(entry.target.matches(".thread") ? "is-drawn" : "is-visible");
+    observer.unobserve(entry.target);
+  }
+}, { threshold: 0.25 });
+
+document.querySelectorAll(".reveal, .thread").forEach((el) => observer.observe(el));
+
+// El hilo de "Nuestra historia" avanza según el scroll
+const line = document.querySelector(".story__line");
+
+function updateThread() {
+  const rect = line.getBoundingClientRect();
+  const start = window.innerHeight * 0.6;
+  const progress = Math.min(1, Math.max(0, (start - rect.top) / rect.height));
+  line.style.setProperty("--progress", progress);
+}
+
+updateThread();
+window.addEventListener("scroll", updateThread, { passive: true });
+window.addEventListener("resize", updateThread);

@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Raúl & Judy · Nuestra boda</title>
-  <meta name="description" content="Raúl y Judy se casan. Toda la información de nuestra boda.">
+  <title>Raúl & Judy · 17·07·2027</title>
+  <meta name="description" content="Un hilo rojo nos unió en 2016. El 17 de julio de 2027 lo atamos para siempre.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -16,17 +17,25 @@
     <a href="#inicio" class="nav__logo">R <span>&</span> J</a>
     <ul class="nav__links">
       <li><a href="#historia">Nuestra historia</a></li>
+      <li><a href="#fecha">17·07</a></li>
       <li><a href="#detalles">El gran día</a></li>
-      <li><a href="#alojamiento">Alojamiento</a></li>
+      <li><a href="#momentos">Momentos</a></li>
       <li><a href="#faq">Preguntas</a></li>
-      <li><a href="#rsvp" class="nav__cta">Confirmar</a></li>
+      <li><a href="#rsvp" class="nav__cta">Ata tu hilo</a></li>
     </ul>
   </nav>
 
   <header id="inicio" class="hero">
     <div class="hero__inner">
-      <p class="hero__kicker">¡Nos casamos!</p>
+      <p class="hero__kicker">Nos casamos</p>
       <h1 class="hero__names">Raúl <span>&</span> Judy</h1>
+
+      <svg class="thread thread--hero" viewBox="0 0 400 60" aria-hidden="true">
+        <path pathLength="1" d="M5 42 C 90 42 140 44 185 40 C 222 36 226 10 202 9 C 178 8 176 36 214 40 C 260 44 310 42 395 42" />
+      </svg>
+
+      <p class="hero__tagline">Un hilo rojo nos unió en 2016.<br>El 17 de julio lo atamos para siempre.</p>
+
       <p class="hero__date">
         <time id="wedding-date" datetime="2027-07-17T17:00:00+02:00">17 · 07 · 2027</time>
       </p>
@@ -39,57 +48,186 @@
         <div><span id="cd-secs">0</span><small>segundos</small></div>
       </div>
 
-      <a href="#rsvp" class="btn">Confirma tu asistencia</a>
+      <a href="#rsvp" class="btn">Ata tu hilo</a>
     </div>
   </header>
 
   <main>
-    <section id="historia" class="section">
-      <h2 class="section__title">Nuestra historia</h2>
-      <p class="section__lead">
-        Aquí contaremos cómo nos conocimos, nuestra primera cita y cómo llegó la pedida.
-        Un texto breve y bonito para que todos lo conozcáis.
+    <section id="leyenda" class="section legend">
+      <p class="legend__mark" aria-hidden="true">結</p>
+      <h2 class="section__title">El hilo rojo</h2>
+      <p class="legend__text reveal">
+        Cuenta una leyenda japonesa que las personas destinadas a encontrarse
+        están unidas por un hilo rojo invisible, atado al dedo meñique.
       </p>
-      <ol class="timeline">
-        <li><span class="timeline__year">20XX</span><p>Nos conocimos.</p></li>
-        <li><span class="timeline__year">20XX</span><p>Nuestra primera aventura juntos.</p></li>
-        <li><span class="timeline__year">20XX</span><p>La pedida.</p></li>
-        <li><span class="timeline__year">2027</span><p>¡El sí, quiero!</p></li>
-      </ol>
+      <p class="legend__text reveal">
+        El hilo puede estirarse, enredarse o tensarse durante años.
+        Puede cruzar ciudades y océanos. Pero nunca se rompe.
+      </p>
+      <p class="legend__note reveal">
+        En japonés, <em>musubi</em> significa atar, unir. Esta es la historia de nuestro nudo.
+      </p>
+    </section>
+
+    <section id="historia" class="section section--alt story">
+      <h2 class="section__title">Nuestra historia</h2>
+
+      <div class="story__line">
+        <div class="story__thread" aria-hidden="true"><div class="story__thread-fill"></div></div>
+
+        <article class="knot reveal">
+          <p class="knot__date">29 · 10 · 2016</p>
+          <h3>El hilo aparece</h3>
+          <p>
+            Un cumpleaños, un amigo en común y dos personas que habían vivido siempre
+            en la misma ciudad sin cruzarse. Aquella noche nos conocimos.
+          </p>
+        </article>
+
+        <article class="knot reveal">
+          <p class="knot__date">02 · 08 · 2017</p>
+          <h3>El hilo se tensa</h3>
+          <p>
+            Hicieron falta casi diez meses para que el hilo tirase de verdad.
+            Un 2 de agosto empezamos a escribir esto juntos.
+          </p>
+        </article>
+
+        <article class="knot reveal">
+          <p class="knot__date">2017 — 2025</p>
+          <h3>El hilo recorre el mundo</h3>
+          <p>
+            Desde Logroño lo hemos ido estirando por todas partes, y en cada lugar
+            se quedó un pedacito de nosotros.
+          </p>
+          <ul class="cities">
+            <li>Salou</li>
+            <li>París</li>
+            <li>Edimburgo</li>
+            <li>Madrid</li>
+            <li>Houston</li>
+            <li>Nueva York</li>
+            <li class="cities__main">Japón</li>
+          </ul>
+        </article>
+
+        <article class="knot knot--feature reveal">
+          <p class="knot__date">17 · 07 · 2025</p>
+          <h3>El día que se abrieron las nubes</h3>
+          <p>
+            Raúl lo tenía todo pensado: la orilla del lago Kawaguchiko, con el monte Fuji al fondo.
+            Durante semanas revisó cada día cómo de visible estaba la montaña, y cada día
+            la encontraba escondida tras las nubes.
+          </p>
+          <p>
+            Aquella mañana, al llegar a Fujikawaguchiko, seguía oculta. Pero al salir de comer,
+            de camino al lago, las nubes se apartaron y el Fuji apareció para nosotros.
+            Allí, frente a él, Raúl le pidió a Judy que se casara con él.
+          </p>
+          <figure class="ph ph--wide" data-photo="img/fuji-pedida.jpg">
+            <span>Foto · La pedida en Kawaguchiko</span>
+          </figure>
+        </article>
+
+        <article class="knot knot--final reveal">
+          <p class="knot__date">17 · 07 · 2027</p>
+          <h3>El nudo</h3>
+          <p>Y ahora, rodeados de las personas que queremos, atamos el hilo para siempre.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="fecha" class="section dates">
+      <h2 class="section__title">Hay fechas que vuelven</h2>
+      <div class="dates__pair reveal">
+        <div class="dates__item">
+          <p class="dates__num">17·07·25</p>
+          <p class="dates__where">Lago Kawaguchiko, Japón</p>
+          <p>Le pidió que se casara con él.</p>
+        </div>
+        <svg class="thread thread--dates" viewBox="0 0 200 40" aria-hidden="true">
+          <path pathLength="1" d="M5 20 C 50 5 70 35 100 20 C 130 5 150 35 195 20" />
+        </svg>
+        <div class="dates__item">
+          <p class="dates__num">17·07·27</p>
+          <p class="dates__where">Logroño, La Rioja</p>
+          <p>Nos casamos.</p>
+        </div>
+      </div>
+      <p class="section__lead reveal">
+        Dos años exactos después, el mismo día. No lo vemos como una casualidad,
+        sino como el hilo recordándonos dónde empezó todo.
+      </p>
     </section>
 
     <section id="detalles" class="section section--alt">
       <h2 class="section__title">El gran día</h2>
       <div class="cards">
-        <article class="card">
+        <article class="card reveal">
           <h3>Ceremonia</h3>
           <p class="card__time">17:00 h</p>
           <p>Ermita Virgen de los Parrales<br>Baños de Río Tobía, La Rioja</p>
           <a class="link" href="https://maps.app.goo.gl/fTjcRmtDrQo7tExN9" target="_blank" rel="noopener">Ver en el mapa →</a>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>Celebración</h3>
           <p class="card__time">A continuación</p>
           <p>Bodegas y Viñedos del Marqués de Vargas<br>Logroño, La Rioja</p>
           <a class="link" href="https://maps.app.goo.gl/u3kuGZbr5H2L1ZBg6" target="_blank" rel="noopener">Ver en el mapa →</a>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>Dress code</h3>
-          <p class="card__time">Formal</p>
-          <p>Detalles sobre la vestimenta, colores a evitar, etc.</p>
+          <p class="card__time">Muy pronto</p>
+          <p>Os contaremos aquí cómo vestir para el gran día.</p>
         </article>
       </div>
     </section>
 
-    <section id="alojamiento" class="section">
-      <h2 class="section__title">Alojamiento y transporte</h2>
+    <section id="hora-magica" class="golden">
+      <div class="golden__inner reveal">
+        <p class="golden__kicker">21:45 h · entre viñedos</p>
+        <h2 class="golden__title">La hora mágica</h2>
+        <p>
+          Nos gustan las cosas pequeñas: el sol en la cara un día de frío,
+          el silencio de un atardecer, ese rato en que el tiempo parece detenerse.
+        </p>
+        <p>
+          Cuando el sol se esconda tras los viñedos, nos encantaría pararlo todo un momento
+          y verlo caer junto a vosotros.
+        </p>
+      </div>
+    </section>
+
+    <section id="momentos" class="section">
+      <h2 class="section__title">Momentos eternos</h2>
       <p class="section__lead">
-        Hoteles recomendados cerca del lugar, códigos de descuento y la información
-        del autobús que organizaremos para ir y volver.
+        Nos encanta hacer fotos de lo que a priori es sencillo y normal.
+        Para nosotros, esos instantes son para siempre.
+      </p>
+      <div class="gallery">
+        <figure class="ph ph--tall reveal" data-photo="img/japon.jpg"><span>Foto · Japón</span></figure>
+        <figure class="ph reveal" data-photo="img/atardecer.jpg"><span>Foto · Un atardecer</span></figure>
+        <figure class="ph reveal" data-photo="img/paris.jpg"><span>Foto · París</span></figure>
+        <figure class="ph reveal" data-photo="img/nueva-york.jpg"><span>Foto · Nueva York</span></figure>
+        <figure class="ph ph--tall reveal" data-photo="img/edimburgo.jpg"><span>Foto · Edimburgo</span></figure>
+        <figure class="ph reveal" data-photo="img/logrono.jpg"><span>Foto · Un día cualquiera en Logroño</span></figure>
+        <figure class="ph reveal" data-photo="img/sol.jpg"><span>Foto · El sol en un día de frío</span></figure>
+      </div>
+      <p class="section__lead gallery__note reveal">
+        El 17 de julio, vuestras fotos también serán parte de la historia.
+        Muy pronto os contaremos cómo compartirlas con nosotros.
       </p>
     </section>
 
-    <section id="faq" class="section section--alt">
+    <section id="alojamiento" class="section section--alt">
+      <h2 class="section__title">Alojamiento y transporte</h2>
+      <p class="section__lead">
+        Aquí encontraréis hoteles recomendados y la información sobre cómo llegar
+        a la ceremonia y a la celebración.
+      </p>
+    </section>
+
+    <section id="faq" class="section">
       <h2 class="section__title">Preguntas frecuentes</h2>
       <div class="faq">
         <details>
@@ -102,21 +240,28 @@
         </details>
         <details>
           <summary>¿Hay lista de bodas?</summary>
-          <p>Vuestra presencia es nuestro mejor regalo. Si aun así queréis tener un detalle, aquí pondremos el número de cuenta.</p>
+          <p>Vuestra presencia es nuestro mejor regalo. Si aun así queréis tener un detalle, os lo contaremos aquí.</p>
         </details>
       </div>
     </section>
 
-    <section id="rsvp" class="section rsvp">
-      <h2 class="section__title">¿Vienes?</h2>
-      <p class="section__lead">Por favor, confírmanos tu asistencia antes del <strong>17 de junio de 2027</strong>.</p>
-      <!-- TODO: enlazar a un Google Form o similar -->
+    <section id="rsvp" class="section section--alt rsvp">
+      <svg class="thread thread--rsvp" viewBox="0 0 120 60" aria-hidden="true">
+        <path pathLength="1" d="M5 40 C 35 40 45 38 55 32 C 70 22 66 8 58 10 C 48 12 52 34 68 38 C 80 41 95 40 115 40" />
+      </svg>
+      <h2 class="section__title">Ata tu hilo</h2>
+      <p class="section__lead">
+        Nos haría muy felices que formaras parte de este nudo.
+        Confírmanos tu asistencia antes del <strong>17 de junio de 2027</strong>.
+      </p>
+      <!-- TODO: enlazar al formulario -->
       <a href="#" class="btn">Confirmar asistencia</a>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Raúl <span>&</span> Judy · 2027</p>
+    <p class="footer__names">Raúl <span>&</span> Judy</p>
+    <p class="footer__line">Unidos por un hilo rojo desde 2016 · 17·07·2027</p>
   </footer>
 
   <script src="script.js"></script>
