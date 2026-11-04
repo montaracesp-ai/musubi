@@ -44,15 +44,15 @@ window.addEventListener("scroll", updateThread, { passive: true });
 window.addEventListener("resize", updateThread);
 
 // Confirmación de asistencia: el formulario es nuestro y las respuestas se envían a Google Forms.
-// Para conectarlo, rellena `action` y los `entry.` con los del enlace prellenado del Google Form.
+// Los `entry.` son los de cada pregunta del Google Form «Boda Raul y Judy».
 const GOOGLE_FORM = {
-  action: "", // https://docs.google.com/forms/d/e/<id>/formResponse
+  action: "https://docs.google.com/forms/d/e/1FAIpQLSdvzsZ3WtdVsxKgQ8Y5VTc_XpWA7R-NsRNxOdOkuGQX3nAzCw/formResponse",
   fields: {
-    name: "",
-    attending: "",
-    allergies: "",
-    song: "",
-    message: "",
+    name: "entry.473919416",
+    attending: "entry.322437586",
+    allergies: "entry.589030232",
+    song: "entry.515396184",
+    message: "entry.724771481",
   },
 };
 
