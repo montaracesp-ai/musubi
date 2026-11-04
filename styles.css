@@ -3,6 +3,7 @@
   --cream: #f8f6f1;
   --sand: #e4eadc;
   --washi: #f3f1e8;
+  --gold: #b0955c;
   --paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .33 0 0 0 0 .27 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --ink: #3a3d35;
   --muted: #77786e;
@@ -86,9 +87,10 @@ a { color: inherit; }
   /* Atardecer sutil: cielo claro arriba, melocotón y rosa en el centro, salvia en el horizonte */
   background:
     radial-gradient(ellipse 55% 42% at 50% 40%, rgba(255, 240, 222, 0.9), transparent 70%),
-    radial-gradient(ellipse 80% 50% at 15% 85%, rgba(104, 124, 92, 0.14), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 15% 68%, rgba(104, 124, 92, 0.12), transparent 70%),
     radial-gradient(ellipse 70% 45% at 90% 15%, rgba(243, 200, 201, 0.45), transparent 70%),
-    linear-gradient(180deg, #f7f1ea 0%, #fae7d9 34%, #f8dcd6 58%, #efe2df 78%, #e4e9dd 100%);
+    /* termina en el mismo papel que «El hilo rojo» para que el paso sea suave */
+    linear-gradient(180deg, #f7f1ea 0%, #fae7d9 32%, #f8dcd6 55%, #f1e6e1 76%, var(--washi) 100%);
 }
 /* Grano de papel y marco fino de invitación */
 .hero::before {
@@ -420,7 +422,63 @@ a { color: inherit; }
 .dates__item p:last-child { color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
 .thread--dates { width: 100%; }
 
-/* El gran día */
+/* El gran día: papel de algodón con marco fino, sello de lacre y paniculata */
+.invitation {
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 1.5rem 10rem;
+  background-color: #f4efe4;
+  background-image: var(--paper-noise);
+}
+.invitation::before, .invitation::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: min(520px, 60vw);
+  aspect-ratio: 520 / 220;
+  background: url("img/paniculata.svg") 0 100% / contain no-repeat;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.invitation::before { left: 0; }
+.invitation::after { right: 0; transform: scaleX(-1); }
+.invitation__frame {
+  position: relative;
+  z-index: 1;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 5rem clamp(1.2rem, 4vw, 3.5rem) 4rem;
+  background:
+    linear-gradient(var(--gold), var(--gold)) 28px 0 / calc(100% - 56px) 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 28px 100% / calc(100% - 56px) 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 0 28px / 1px calc(100% - 56px) no-repeat,
+    linear-gradient(var(--gold), var(--gold)) 100% 28px / 1px calc(100% - 56px) no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M28 .5 A27.5 27.5 0 0 0 .5 28' fill='none' stroke='%23b0955c' stroke-width='1'/%3E%3C/svg%3E") 0 0 / 28px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M0 .5 A27.5 27.5 0 0 1 27.5 28' fill='none' stroke='%23b0955c' stroke-width='1'/%3E%3C/svg%3E") 100% 0 / 28px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M.5 0 A27.5 27.5 0 0 1 28 27.5' fill='none' stroke='%23b0955c' stroke-width='1'/%3E%3C/svg%3E") 0 100% / 28px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M27.5 0 A27.5 27.5 0 0 0 0 27.5' fill='none' stroke='%23b0955c' stroke-width='1'/%3E%3C/svg%3E") 100% 100% / 28px no-repeat;
+}
+.invitation__seal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 104px;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  filter: drop-shadow(0 4px 6px rgba(90, 30, 30, 0.3));
+}
+.invitation__ornament {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 52px;
+  height: 22px;
+  transform: translate(-50%, 50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 24'%3E%3Cg fill='%23b0955c'%3E%3Cpath d='M20 1 C 22 7 22 9 20 12 C 18 9 18 7 20 1Z M20 23 C 22 17 22 15 20 12 C 18 15 18 17 20 23Z M8 12 C 13 10 16 10 20 12 C 16 14 13 14 8 12Z M32 12 C 27 10 24 10 20 12 C 24 14 27 14 32 12Z'/%3E%3Ccircle cx='4' cy='12' r='1.2'/%3E%3Ccircle cx='36' cy='12' r='1.2'/%3E%3C/g%3E%3C/svg%3E") center / 40px no-repeat, #f4efe4;
+}
+.invitation .cards { gap: 0; }
+.invitation .card { background: none; padding: 1.5rem 1.5rem 0.5rem; }
+.invitation .card + .card { border-left: 1px solid rgba(176, 149, 92, 0.4); }
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -515,6 +573,7 @@ a { color: inherit; }
   .countdown small { letter-spacing: 0.1em; }
 
   .story::before, .story::after { width: 90px; opacity: 0.7; }
+  .invitation .card + .card { border-left: 0; border-top: 1px solid rgba(176, 149, 92, 0.4); padding-top: 2rem; margin-top: 1rem; }
   .legend__grid { grid-template-columns: 1fr; text-align: center; }
   .legend__kanji { justify-content: center; padding-right: 0; border-right: 0; }
   .legend .section__title::after { margin-left: auto; }
