@@ -1,2 +1,8 @@
 .claude/
 .DS_Store
+
+# Fotos originales (las versiones para la web están en img/)
+/*.jpg
+/*.JPG
+/*.jpeg
+/*.JPEG
