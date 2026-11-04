@@ -18,6 +18,7 @@
 html { scroll-behavior: smooth; }
 
 body {
+  position: relative;
   background: var(--cream);
   color: var(--ink);
   font-family: var(--sans);
@@ -44,7 +45,7 @@ a { color: inherit; }
   font-size: 1.6rem;
   text-decoration: none;
 }
-.nav__logo span, .hero__names span, .footer span { color: var(--red); font-style: italic; }
+.nav__logo span, .hero__names span, .footer span { color: var(--red); }
 .nav__links { display: flex; gap: 1.75rem; list-style: none; }
 .nav__links a {
   text-decoration: none;
@@ -66,6 +67,23 @@ a { color: inherit; }
 }
 .js .thread path { stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s ease-in-out; }
 .js .thread.is-drawn path { stroke-dashoffset: 0; }
+
+/* Hilo que recorre toda la página; el trazado lo calcula script.js */
+.page-thread {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: visible;
+}
+.page-thread path {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.5s ease-out;
+}
 
 /* Hero */
 .hero {
@@ -201,11 +219,6 @@ a { color: inherit; }
   bottom: 0;
   width: 2px;
   transform: translateX(-50%);
-  background: rgba(168, 50, 58, 0.12);
-}
-.story__thread-fill {
-  height: calc(var(--progress, 1) * 100%);
-  background: var(--red);
 }
 .knot {
   position: relative;
@@ -403,4 +416,5 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .js .thread path { stroke-dashoffset: 0; transition: none; }
+  .page-thread path { transition: none; }
 }
