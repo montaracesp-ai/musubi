@@ -44,15 +44,7 @@ a { color: inherit; }
   font-size: 1.6rem;
   text-decoration: none;
 }
-/* & fino de palo seco, más pequeño y centrado entre los nombres */
-.nav__logo span, .hero__names span, .footer span {
-  color: var(--red);
-  font-family: var(--sans);
-  font-weight: 300;
-  font-size: 0.55em;
-  vertical-align: 0.18em;
-  margin: 0 0.15em;
-}
+.nav__logo span, .hero__names span, .footer span { color: var(--red); }
 .nav__links { display: flex; gap: 1.75rem; list-style: none; }
 .nav__links a {
   text-decoration: none;
