@@ -1,10 +1,14 @@
 :root {
-  --cream: #faf6f0;
-  --sand: #f1e9dd;
-  --ink: #3b3a36;
-  --muted: #7a756c;
-  --sage: #8a9a7b;
-  --gold: #b8975a;
+  /* Paleta de la web: salvia, melocotón, coral, rosa empolvado y blanco roto */
+  --cream: #f8f6f1;
+  --sand: #f7e6e3;
+  --ink: #3a3d35;
+  --muted: #77786e;
+  --sage: #687c5c;
+  --sage-dark: #4f5f46;
+  --peach: #ee9f72;
+  --coral: #dc6f78;
+  --blush: #f3c8c9;
   --red: #a8323a;
   --dusk-1: #f3c98b;
   --dusk-2: #e0896b;
@@ -36,7 +40,7 @@ a { color: inherit; }
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(250, 246, 240, 0.9);
+  background: rgba(248, 246, 241, 0.9);
   backdrop-filter: blur(8px);
 }
 .nav__logo {
@@ -45,6 +49,7 @@ a { color: inherit; }
   text-decoration: none;
 }
 .nav__logo span, .hero__names span, .footer span { color: var(--red); }
+.footer span { color: var(--blush); }
 .nav__links { display: flex; gap: 1.75rem; list-style: none; }
 .nav__links a {
   text-decoration: none;
@@ -75,8 +80,9 @@ a { color: inherit; }
   text-align: center;
   padding: 6rem 1rem 3rem;
   background:
-    radial-gradient(circle at 20% 20%, rgba(138, 154, 123, 0.16), transparent 45%),
-    radial-gradient(circle at 80% 80%, rgba(224, 137, 107, 0.14), transparent 45%),
+    radial-gradient(circle at 18% 18%, rgba(104, 124, 92, 0.16), transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(238, 159, 114, 0.18), transparent 45%),
+    radial-gradient(circle at 60% 100%, rgba(243, 200, 201, 0.35), transparent 40%),
     var(--cream);
 }
 .hero__kicker {
@@ -129,7 +135,7 @@ a { color: inherit; }
 .btn {
   display: inline-block;
   padding: 0.9rem 2.2rem;
-  background: var(--ink);
+  background: var(--sage-dark);
   color: var(--cream);
   text-decoration: none;
   font-size: 0.8rem;
@@ -137,7 +143,7 @@ a { color: inherit; }
   text-transform: uppercase;
   transition: background 0.2s;
 }
-.btn:hover { background: var(--red); }
+.btn:hover { background: var(--coral); }
 
 /* Secciones */
 .section {
@@ -269,8 +275,8 @@ a { color: inherit; }
   place-items: center;
   aspect-ratio: 4 / 3;
   background:
-    repeating-linear-gradient(135deg, transparent 0 14px, rgba(59, 58, 54, 0.04) 14px 15px),
-    #e8dfd1;
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(79, 95, 70, 0.06) 14px 15px),
+    #efdcd6;
   color: var(--muted);
   font-size: 0.75rem;
   letter-spacing: 0.15em;
@@ -298,7 +304,7 @@ a { color: inherit; }
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--red);
+  color: var(--coral);
   margin: 0.6rem 0 0.3rem;
 }
 .dates__item p:last-child { color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
@@ -317,7 +323,7 @@ a { color: inherit; }
   padding: 2.5rem 1.5rem;
 }
 .card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.6rem; }
-.card__time { color: var(--red); letter-spacing: 0.15em; margin-bottom: 1rem; }
+.card__time { color: var(--coral); letter-spacing: 0.15em; margin-bottom: 1rem; }
 .link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: var(--sage); }
 
 /* La hora mágica */
@@ -353,14 +359,14 @@ a { color: inherit; }
 
 /* Preguntas */
 .faq { max-width: 680px; margin: 0 auto; text-align: left; }
-.faq details { border-bottom: 1px solid rgba(59, 58, 54, 0.15); padding: 1.2rem 0; }
+.faq details { border-bottom: 1px solid rgba(79, 95, 70, 0.18); padding: 1.2rem 0; }
 .faq summary {
   cursor: pointer;
   font-family: var(--serif);
   font-size: 1.3rem;
   list-style: none;
 }
-.faq summary::after { content: "+"; float: right; color: var(--red); }
+.faq summary::after { content: "+"; float: right; color: var(--coral); }
 .faq details[open] summary::after { content: "−"; }
 .faq details p { margin-top: 0.75rem; color: var(--muted); }
 
@@ -370,7 +376,7 @@ a { color: inherit; }
 .footer {
   padding: 3rem 1rem;
   text-align: center;
-  background: var(--ink);
+  background: var(--sage-dark);
   color: var(--cream);
 }
 .footer__names { font-family: var(--serif); font-size: 1.6rem; }
