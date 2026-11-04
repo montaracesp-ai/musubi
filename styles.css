@@ -80,9 +80,10 @@ a { color: inherit; }
 .page-thread path {
   fill: none;
   stroke: var(--red);
-  stroke-width: 1.6;
+  stroke-width: 2;
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.5s ease-out;
+  stroke-linejoin: round;
+  transition: stroke-dashoffset 0.6s ease-out;
 }
 
 /* Hero */
@@ -108,9 +109,10 @@ a { color: inherit; }
   font-weight: 400;
   font-size: clamp(3.5rem, 12vw, 8rem);
   line-height: 1.1;
-  margin-top: 1rem;
+  margin: 1rem 0 1.5rem;
 }
-.thread--hero { display: block; width: min(420px, 90%); margin: 0 auto 1.2rem; }
+/* El & lo dibuja el hilo (script.js); el carácter solo reserva su hueco */
+.js .hero__names span { color: transparent; }
 .hero__tagline {
   font-family: var(--serif);
   font-style: italic;
@@ -333,8 +335,10 @@ a { color: inherit; }
 .card__time { color: var(--red); letter-spacing: 0.15em; margin-bottom: 1rem; }
 .link { display: inline-block; margin-top: 1rem; font-size: 0.85rem; color: var(--sage); }
 
-/* La hora mágica */
+/* La hora mágica: el hilo pasa por detrás */
 .golden {
+  position: relative;
+  z-index: 6;
   padding: 7rem 1.5rem;
   text-align: center;
   color: #fffaf3;
