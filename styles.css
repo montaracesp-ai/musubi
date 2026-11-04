@@ -444,14 +444,6 @@ a { color: inherit; }
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M.5 0 A27.5 27.5 0 0 1 28 27.5' fill='none' stroke='%23b0955c' stroke-width='1'/%3E%3C/svg%3E") 0 100% / 28px no-repeat,
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M27.5 0 A27.5 27.5 0 0 0 0 27.5' fill='none' stroke='%23b0955c' stroke-width='1'/%3E%3C/svg%3E") 100% 100% / 28px no-repeat;
 }
-.invitation__seal {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 104px;
-  transform: translate(-50%, -50%) rotate(-8deg);
-  filter: drop-shadow(0 4px 6px rgba(90, 30, 30, 0.3));
-}
 .invitation__ornament {
   position: absolute;
   bottom: 0;
@@ -461,6 +453,7 @@ a { color: inherit; }
   transform: translate(-50%, 50%);
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 24'%3E%3Cg fill='%23b0955c'%3E%3Cpath d='M20 1 C 22 7 22 9 20 12 C 18 9 18 7 20 1Z M20 23 C 22 17 22 15 20 12 C 18 15 18 17 20 23Z M8 12 C 13 10 16 10 20 12 C 16 14 13 14 8 12Z M32 12 C 27 10 24 10 20 12 C 24 14 27 14 32 12Z'/%3E%3Ccircle cx='4' cy='12' r='1.2'/%3E%3Ccircle cx='36' cy='12' r='1.2'/%3E%3C/g%3E%3C/svg%3E") center / 40px no-repeat, var(--washi);
 }
+.invitation__ornament--top { top: 0; bottom: auto; transform: translate(-50%, -50%); }
 .invitation .cards { gap: 0; }
 .invitation .card { background: none; padding: 1.5rem 1.5rem 0.5rem; }
 .invitation .card + .card { border-left: 1px solid rgba(176, 149, 92, 0.4); }
@@ -500,28 +493,45 @@ a { color: inherit; }
 .golden p + p { margin-top: 1rem; }
 
 /* Momentos eternos */
-/* Las fotos como copias impresas, en columnas que respetan su formato */
+/* Collage: verticales a dos filas, horizontales a una; cada foto reencuadrada con object-position */
 .gallery {
-  columns: 3;
-  column-gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "atardecer japon     paris"
+    "atardecer logrono   paris"
+    "edimburgo nueva-york sol"
+    "edimburgo nueva-york sol";
+  gap: 1rem;
   max-width: 1000px;
+  aspect-ratio: 1;
   margin: 0 auto;
 }
-.print {
-  break-inside: avoid;
-  margin-bottom: 1.25rem;
-  padding: 0.6rem 0.6rem 0;
-  background: #fff;
-  box-shadow: 0 12px 28px -18px rgba(58, 61, 53, 0.45);
-}
-.print img { display: block; width: 100%; height: auto; }
-.print figcaption {
-  padding: 0.55rem 0 0.7rem;
+.tile { position: relative; overflow: hidden; }
+.tile img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.tile:hover img { transform: scale(1.03); }
+.tile figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 2.2rem 1rem 0.7rem;
+  background: linear-gradient(transparent, rgba(30, 32, 28, 0.55));
+  color: #fffaf3;
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.05rem;
-  color: var(--muted);
+  text-align: left;
 }
+.tile--atardecer { grid-area: atardecer; }
+.tile--japon { grid-area: japon; }
+.tile--paris { grid-area: paris; }
+.tile--paris img { object-position: 38% 50%; }
+.tile--logrono { grid-area: logrono; }
+.tile--logrono img { object-position: 50% 25%; }
+.tile--edimburgo { grid-area: edimburgo; }
+.tile--nueva-york { grid-area: nueva-york; }
+.tile--nueva-york img { object-position: 44% 50%; }
+.tile--sol { grid-area: sol; }
 .gallery__note { margin-top: 2.5rem; font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
 
 /* Preguntas */
@@ -580,9 +590,20 @@ a { color: inherit; }
   .dates__pair { grid-template-columns: 1fr; }
   .thread--dates { width: 120px; margin: 0.5rem auto; }
 
-  .gallery { columns: 2; column-gap: 0.75rem; }
-  .print { margin-bottom: 0.75rem; padding: 0.4rem 0.4rem 0; }
-  .print figcaption { font-size: 0.9rem; padding: 0.35rem 0 0.5rem; }
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "atardecer japon"
+      "atardecer logrono"
+      "paris edimburgo"
+      "paris edimburgo"
+      "nueva-york sol"
+      "nueva-york sol";
+    gap: 0.6rem;
+    aspect-ratio: 4 / 9;
+  }
+  .tile figcaption { font-size: 0.85rem; padding: 1.6rem 0.6rem 0.45rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
