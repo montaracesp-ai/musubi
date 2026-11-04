@@ -50,7 +50,6 @@ const GOOGLE_FORM = {
   fields: {
     name: "",
     attending: "",
-    companion: "",
     allergies: "",
     song: "",
     message: "",
