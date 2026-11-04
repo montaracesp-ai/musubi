@@ -92,14 +92,7 @@ rsvpForm.addEventListener("submit", async (event) => {
   const button = rsvpForm.querySelector("button");
   button.disabled = true;
   try {
-    if (formConnected) {
-      const body = new URLSearchParams();
-      for (const [key, entry] of Object.entries(GOOGLE_FORM.fields)) {
-        if (entry && data.get(key)) body.append(entry, data.get(key));
-      }
-      // Google no permite leer la respuesta (no-cors): si la petición sale, damos el envío por bueno
-      await fetch(GOOGLE_FORM.action, { method: "POST", mode: "no-cors", body });
-    }
+    if (formConnected) await sendToGoogle(data);
     showThanks(data.get("attending") === COMING, data.get("name").trim().split(" ")[0]);
   } catch {
     rsvpError.textContent = "No hemos podido enviarlo. Comprueba tu conexión e inténtalo de nuevo.";
@@ -107,6 +100,51 @@ rsvpForm.addEventListener("submit", async (event) => {
     button.disabled = false;
   }
 });
+
+// Envío clásico de formulario a un iframe oculto: funciona en todos los navegadores
+// (fetch con no-cors falla en silencio en algunos, sobre todo Safari en iPhone).
+// Google no deja leer su respuesta, así que damos el envío por bueno cuando el iframe carga.
+function sendToGoogle(data) {
+  return new Promise((resolve) => {
+    const name = `google-form-${Date.now()}`;
+    const iframe = document.createElement("iframe");
+    iframe.name = name;
+    iframe.hidden = true;
+    const form = document.createElement("form");
+    form.action = GOOGLE_FORM.action;
+    form.method = "POST";
+    form.target = name;
+    form.hidden = true;
+    for (const [key, entry] of Object.entries(GOOGLE_FORM.fields)) {
+      const value = (data.get(key) || "").trim();
+      if (!value) continue;
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = entry;
+      input.value = value;
+      form.append(input);
+    }
+    let finished = false;
+    const done = () => {
+      if (finished) return;
+      finished = true;
+      resolve();
+      setTimeout(() => { iframe.remove(); form.remove(); }, 5000);
+    };
+    // El iframe vacío también dispara "load" al insertarse: solo vale cuando ya muestra la página de Google
+    iframe.addEventListener("load", () => {
+      try {
+        if (iframe.contentWindow.location.href === "about:blank") return;
+      } catch {
+        // Otro origen (Google): el envío ha llegado
+      }
+      done();
+    });
+    setTimeout(done, 8000);
+    document.body.append(iframe, form);
+    form.submit();
+  });
+}
 
 function showThanks(coming, firstName) {
   rsvpThanks.querySelector(".rsvp-thanks__title").textContent =
