@@ -534,19 +534,6 @@ a { color: inherit; }
 .tile--sol { grid-area: sol; }
 .gallery__note { margin-top: 2.5rem; font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
 
-/* Preguntas */
-.faq { max-width: 680px; margin: 0 auto; text-align: left; }
-.faq details { border-bottom: 1px solid rgba(79, 95, 70, 0.18); padding: 1.2rem 0; }
-.faq summary {
-  cursor: pointer;
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  list-style: none;
-}
-.faq summary::after { content: "+"; float: right; color: var(--coral); }
-.faq details[open] summary::after { content: "−"; }
-.faq details p { margin-top: 0.75rem; color: var(--muted); }
-
 /* Confirmación */
 .thread--rsvp { width: 120px; display: block; margin: 0 auto 1rem; }
 
