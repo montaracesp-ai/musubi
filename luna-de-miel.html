@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luna de miel · Raúl & Judy</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261105">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">R <span>&</span> J</a>
+    <ul class="nav__links">
+      <li><a href="index.html#historia">Nuestra historia</a></li>
+      <li><a href="index.html#fecha">17·07</a></li>
+      <li><a href="index.html#detalles">El gran día</a></li>
+      <li><a href="index.html#momentos">Momentos</a></li>
+      <li class="nav__luna"><a href="luna-de-miel.html" aria-current="page">Luna de miel</a></li>
+      <li><a href="index.html#rsvp" class="nav__cta">Ata tu hilo</a></li>
+    </ul>
+  </nav>
+
+  <main id="luna">
+    <section class="hero hm-locked">
+      <div class="hero__inner">
+        <form class="lock" novalidate>
+          <svg class="thread thread--lock is-drawn" viewBox="0 0 120 60" aria-hidden="true">
+            <path pathLength="1" d="M5 40 C 35 40 45 38 55 32 C 70 22 66 8 58 10 C 48 12 52 34 68 38 C 80 41 95 40 115 40" />
+          </svg>
+          <p class="lock__title">Luna de miel</p>
+          <p class="lock__text">Este rincón es solo para nosotros dos.</p>
+          <input class="lock__input" type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" autocomplete="current-password">
+          <p class="lock__error" role="alert" hidden></p>
+          <button type="submit" class="btn">Entrar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__names">Raúl <span>&</span> Judy</p>
+    <p class="footer__line">Unidos por un hilo rojo desde 2016 · 17·07·2027</p>
+  </footer>
+
+  <script src="luna.js?v=20261105"></script>
+</body>
+</html>
